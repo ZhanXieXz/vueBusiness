@@ -1,0 +1,21 @@
+{
+    "states": "1",
+    "user": [
+        {
+            "user_name": "xiez",
+            "password": "123456",
+            "token": "001",
+            "user_image": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1408793564,3262560105&fm=26&gp=0.jpg"
+        }, {
+            "user_name": "xie",
+            "password": "123456",
+            "token": "002",
+            "user_image": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1402472831,1255085721&fm=26&gp=0.jpg"
+        }, {
+            "user_name": "zhan",
+            "password": "123456",
+            "token": "003",
+            "user_image": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2685624754,3634455234&fm=26&gp=0.jpg"
+        }
+    ]
+}
