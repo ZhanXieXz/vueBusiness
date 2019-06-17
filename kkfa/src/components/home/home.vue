@@ -1,8 +1,8 @@
 <template>
   <div>
     <home-banner :banner="banner"></home-banner>
-    <home-middle-goods 
-      :tuiguang="tuiguang" 
+    <home-middle-goods
+      :tuiguang="tuiguang"
       :swiper="swiper"
       :products1="products1"
       :products2="products2"
@@ -18,8 +18,8 @@ import HomeBanner from './component/HomeBanner';
 import HomeMiddleGoods from './component/HomeMiddleGoods';
 import loginBox from '../login/loginBox';
 export default {
-  name: "home",
-  data () {
+  name: 'home',
+  data() {
     return {
       banner: [],
       tuiguang: [],
@@ -27,8 +27,8 @@ export default {
       products1: [],
       products2: [],
       footerBanner: [],
-      footer: [],
-    }
+      footer: []
+    };
   },
   components: {
     HomeBanner,
@@ -36,10 +36,10 @@ export default {
     loginBox
   },
   methods: {
-    getData () {
-      this.axios.get('static/home/home.json').then(this.handleData)
+    getData() {
+      this.axios.get('static/home/home.json').then(this.handleData);
     },
-    handleData (res) {
+    handleData(res) {
       if (res.data) {
         var data = res.data;
         this.banner = data.banner;
@@ -49,11 +49,11 @@ export default {
         this.products2 = data.products2;
         this.footer = data.footer;
         this.footerBanner = data.footerBanner;
-      }        
+      }
     }
   },
   mounted: function() {
-    this.getData()
+    this.getData();
   }
 };
 </script>

@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  name: "homeNav"
+  name: 'homeNav'
 };
 </script>
 

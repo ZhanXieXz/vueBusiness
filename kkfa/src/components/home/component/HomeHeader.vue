@@ -36,13 +36,14 @@
 
 <script>
 export default {
-  name: "HomeHeader",
+  name: 'HomeHeader',
   methods: {
     login() {
       if (this.$store.state.cart.user_token) {
-        alert("你已登录")
+        alert('你已登录');
       } else {
-        document.getElementsByClassName("login-wrap")[0].style.display = "block";
+        document.getElementsByClassName('login-wrap')[0].style.display =
+          'block';
       }
     }
   }

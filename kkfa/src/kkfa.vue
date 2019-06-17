@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import pageHeader from './components/home/component/HomeHeader'
-import HomeNav from './components/home/component/HomeNav' 
-import HomeSearch from './components/home/component/HomeSearch'
-import pageFooter from './components/home/component/HomeFooter'
+import pageHeader from './components/home/component/HomeHeader';
+import HomeNav from './components/home/component/HomeNav';
+import HomeSearch from './components/home/component/HomeSearch';
+import pageFooter from './components/home/component/HomeFooter';
 export default {
   name: 'kkfa',
   components: {
@@ -21,11 +21,11 @@ export default {
     pageFooter,
     HomeSearch
   }
-}
+};
 </script>
 
 <style>
 #kkfa {
-  background-color: #f5f5f5
+  background-color: #f5f5f5;
 }
 </style>

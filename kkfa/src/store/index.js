@@ -5,8 +5,8 @@ import collect from './collect.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    modules: {
-        cart,
-        collect
-    }
+  modules: {
+    cart,
+    collect
+  }
 })

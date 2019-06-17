@@ -59,83 +59,83 @@
 
 <script>
 export default {
-    name: 'goodsDetails',
-    data () {
-        return {
-            g: '',
-        }
-    },
-    created: function () {
-        let id = this.$route.params.id
-        this.axios.get('/static/goods/goods.json').then((res) => {
-            var data = res.data.data;
-            for (let i = 0; i < data.length; i++) {
-                const dataId = data[i].id;
-                if (id == dataId ) {
-                    this.g = data[i]
-                }
-            }
-        })
+  name: 'goodsDetails',
+  data () {
+    return {
+      g: ''
     }
+  },
+  created: function () {
+    const id = this.$route.params.id
+    this.axios.get('/static/goods/goods.json').then((res) => {
+      var data = res.data.data;
+      for (let i = 0; i < data.length; i++) {
+        const dataId = data[i].id
+        if (id == dataId) {
+          this.g = data[i]
+        }
+      }
+    })
+  }
 }
 </script>
 
 <style scoped lang="stylus">
     .wrap {
-        width 100%;
-        min-height 600px;
-        background-color #f6f6f6;
-        margin-top 30px;
+        width 100%
+        min-height 600px
+        background-color #f6f6f6
+        margin-top 30px
         .details {
             width 1140px
-            background: #fff;
-            border-radius: 3px;
-            border-bottom: 15px;
-            padding-right: 0px;
-            padding-left 20px;
+            background: #fff
+            border-radius: 3px
+            border-bottom: 15px
+            padding-right: 0px
+            padding-left 20px
             margin 0 auto
             .right {
-                width: 66.66666667%;
-                float left;
-                border-right: 1px dashed #e3e3e3;
-                padding-top: 15px;
-                padding-left: 0px;
-                min-height: 550px;
+                width: 66.66666667%
+                float left
+                border-right: 1px dashed #e3e3e3
+                padding-top: 15px
+                padding-left: 0px
+                min-height: 550px
                 overflow hidden
                 position relative
                 h3 {
-                    font-size: 24px;
-                    color: #343434;
-                    padding-right: 26px;
-                    line-height: 25px;
+                    font-size: 24px
+                    color: #343434
+                    padding-right: 26px
+                    line-height: 25px
                 }
                 .info {
-                    font-size: 12px;
-                    height: 40px;
-                    color: #a0a0a0;
-                    line-height: 20px;
-                    margin-top: 8px;
+                    font-size: 12px
+                    height: 40px
+                    color: #a0a0a0
+                    line-height: 20px
+                    margin-top: 8px
                     overflow hidden
                 }
                 .product-essential {
-                    width 200px;
-                    height 270px;
-                    position absolute; 
+                    width 200px
+                    height 270px
+                    position absolute 
                     img {
-                        width 200px;
-                        height 270px;
+                        width 200px
+                        height 270px
                     }
                 }
                 .essential {
-                    padding-left 250px;
-                    padding-right 20px;
+                    padding-left 250px
+                    padding-right 20px
                     .price {
-                        background: #F1F1F1;
-                        margin-top: 10px;
-                        border-radius: 3px;
-                        min-height: 90px;
-                        position: relative;
-                        padding 0 20px;
+                        background: #F1F1F1
+                        margin-top: 10px
+                        border-radius: 3px
+                        min-height: 90px
+                        position: relative
+                        padding 0 20px
                         box-sizing border-box
                         p {
                             display inline-block
@@ -143,20 +143,20 @@ export default {
                             font-weight bold
                             font-size 22px
                             margin-top 20px
-                            margin-left 10px;
+                            margin-left 10px
                         }
                         .newprice {
                             display inline-block
-                            color: #0cb46a;
-                            font-size: 32px;
-                            font-weight: normal;
-                            padding-right: 10px;
+                            color: #0cb46a
+                            font-size: 32px
+                            font-weight: normal
+                            padding-right: 10px
                         }
                         .oldprice {
                             display inline-block
-                            font-size: 18px;
-                            color: #777;
-                            font-weight: normal;
+                            font-size: 18px
+                            color: #777
+                            font-weight: normal
                             text-decoration line-through
                         }
                     }
@@ -202,23 +202,23 @@ export default {
                                 background-position -641px -633px
                             }
                             .item-btn {
-                                transition: color .3s ease-in-out 0s,background-color .3s ease-in-out 0s;
-                                font-size: 12px;
-                                line-height: 0px;
-                                padding: 0px;
-                                height: 30px;
-                                width: 20px;
-                                text-align: center;
-                                font-weight: normal;
-                                background: #f0f0f0;
+                                transition: color .3s ease-in-out 0s,background-color .3s ease-in-out 0s
+                                font-size: 12px
+                                line-height: 0px
+                                padding: 0px
+                                height: 30px
+                                width: 20px
+                                text-align: center
+                                font-weight: normal
+                                background: #f0f0f0
                             }
                             .add-btn {
-                                border-left: none;
-                                border-radius: 0 3px 3px 0;
+                                border-left: none
+                                border-radius: 0 3px 3px 0
                             }
                             .reduce-btn {
-                                border-right: none;
-                                border-radius: 0 3px 3px 0;
+                                border-right: none
+                                border-radius: 0 3px 3px 0
                             }
                             .item-btn:hover {
                                 color: #fff
@@ -226,11 +226,11 @@ export default {
                             }
                             .quantity-ipt {
                                 width 60px
-                                height 30px;
+                                height 30px
                                 box-sizing border-box
                                 display inline-block
                                 border: 1px solid #f1f1f1
-                                font-size 14px;
+                                font-size 14px
                                 text-align center
                             }
                         }
@@ -247,9 +247,9 @@ export default {
                         .buy-btn {
                             font-size 18px
                             width 120px
-                            height 40px;
-                            border: 1px solid transparent;
-                            border-radius: 4px;
+                            height 40px
+                            border: 1px solid transparent
+                            border-radius: 4px
                             background-color #0cb46a
                             color #fff
                             margin-top 20px
@@ -265,7 +265,7 @@ export default {
                             background-image url(../../assets/index.png)
                             background-position -9px -156px
                             vertical-align bottom
-                            margin-left 10px;
+                            margin-left 10px
                         }
                     }
                 }

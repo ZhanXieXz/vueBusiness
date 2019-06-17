@@ -22,8 +22,13 @@
           </swiper>
         </div>
       </div>
-      <div class="rightGoods-nav" >
-        <div class="right-goods kkfa-goods" v-for="item in products1" :key="item.id" @click="goodsPageShow(item)">
+      <div class="rightGoods-nav">
+        <div
+          class="right-goods kkfa-goods"
+          v-for="item in products1"
+          :key="item.id"
+          @click="goodsPageShow(item)"
+        >
           <img v-lazy="item.image" class="rightImg">
           <span class="goods-price">$ {{item.price}}</span>
         </div>
@@ -48,9 +53,7 @@
             <li v-for="(carousel,index) in footerBanner" :key="carousel.id">
               <img v-lazy="carousel.image" class="carousel-goodsImg">
               <p class="goods-title">
-                <a
-                  href
-                >{{carousel.name}}</a>
+                <a href>{{carousel.name}}</a>
               </p>
               <div>
                 <span class="price">${{carousel.price}}</span>
@@ -60,10 +63,18 @@
                 <span class="mask"></span>
                 <div class="mask-conent">
                   <div>
-                    <span class="cart-icon" @click="addCart($event,index,carousel)" :class="{cartActive:cartIndex[index]}"></span>
-                    <span class="collect-icon" @click="collect($event,index,carousel)" :class="{collectActive:collIndex[index]}"></span>
+                    <span
+                      class="cart-icon"
+                      @click="addCart($event,index,carousel)"
+                      :class="{cartActive:cartIndex[index]}"
+                    ></span>
+                    <span
+                      class="collect-icon"
+                      @click="collect($event,index,carousel)"
+                      :class="{collectActive:collIndex[index]}"
+                    ></span>
                   </div>
-                  <p>Stock: In Stock</p>
+                  <p>Stock In Stock</p>
                   <button @click="goodsPageShow(carousel)">MORE DETAILS</button>
                 </div>
               </div>
@@ -86,7 +97,12 @@
         </div>
       </div>
       <div>
-        <div class="nav0-3-wrap" v-for="footNav in footer" :key="footNav.id" @click="goodsPageShow(footNav)">
+        <div
+          class="nav0-3-wrap"
+          v-for="footNav in footer"
+          :key="footNav.id"
+          @click="goodsPageShow(footNav)"
+        >
           <img v-lazy="footNav.image">
           <span class="goods-price">$ {{footNav.price}}</span>
         </div>
@@ -94,16 +110,14 @@
     </div>
     <div class="go_carts" @click="goCart">
       <span class="cart-icon"></span>
-      <span class="goods_num" v-show="this.goodNums">
-        {{this.goodNums}}
-      </span>
+      <span class="goods_num" v-show="this.goodNums">{{this.goodNums}}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomeMiddleGoods",
+  name: 'HomeMiddleGoods',
   props: {
     tuiguang: Array,
     swiper: Array,
@@ -120,7 +134,7 @@ export default {
       dis: 190,
       swipers: {
         loop: true,
-        pagination: ".swiper-pagination",
+        pagination: '.swiper-pagination',
         paginationClickable: true
       },
       scrollY: 0,
@@ -128,7 +142,7 @@ export default {
     };
   },
   methods: {
-    addCart(goods,index,carousel) {
+    addCart(goods, index, carousel) {
       var obj = {};
       obj.id = carousel.id;
       obj.image = carousel.image;
@@ -136,72 +150,79 @@ export default {
       obj.price = carousel.price;
       obj.num = 1;
       if (localStorage.getItem('token')) {
-        this.$set(this.cartIndex,index,!this.cartIndex[index]);
-        if (this.cartIndex[index]) { //添加购物车
-            this.$store.commit('addCart',obj)
-            this.goodNums = JSON.parse(localStorage.getItem("goodscart")).length
-        } else { //购物车去除
-            this.$store.commit('removeCart',obj)
-            this.goodNums = JSON.parse(localStorage.getItem("goodscart")).length
+        this.$set(this.cartIndex, index, !this.cartIndex[index]);
+        if (this.cartIndex[index]) {
+          // 添加购物车
+          this.$store.commit('addCart', obj);
+          this.goodNums = JSON.parse(localStorage.getItem('goodscart')).length;
+        } else {
+          // 购物车去除
+          this.$store.commit('removeCart', obj);
+          this.goodNums = JSON.parse(localStorage.getItem('goodscart')).length;
         }
       } else {
-        document.getElementsByClassName("login-wrap")[0].style.display = "block"
+        document.getElementsByClassName('login-wrap')[0].style.display =
+          'block';
       }
     },
-    collect(goods,index,carousel) {
+    collect(goods, index, carousel) {
       var obj = {};
       obj.id = carousel.id;
       obj.image = carousel.image;
       obj.name = carousel.name;
       obj.price = carousel.price;
       if (localStorage.getItem('token')) {
-        this.$set(this.collIndex,index,!this.collIndex[index]);
-        if (this.collIndex[index]) { //添加购物车
-            this.$store.commit('addCollect',obj)
-        } else { //购物车去除
-            this.$store.commit('removeCollect',obj)
+        this.$set(this.collIndex, index, !this.collIndex[index]);
+        if (this.collIndex[index]) {
+          // 添加购物车
+          this.$store.commit('addCollect', obj);
+        } else {
+          // 购物车去除
+          this.$store.commit('removeCollect', obj);
         }
       } else {
-        document.getElementsByClassName("login-wrap")[0].style.display = "block"
+        document.getElementsByClassName('login-wrap')[0].style.display =
+          'block';
       }
     },
     goClassifyPage() {
-      this.$router.push({path: '/classify'})
+      this.$router.push({ path: '/classify' });
     },
     goodsPageShow(items) {
-        this.$router.push({name: 'goodsDetails',params: {id: items.id}})
+      this.$router.push({ name: 'goodsDetails', params: { id: items.id }});
     },
     scrolls() {
-      this.scrollY = document.documentElement.scrollTop || document.body.scrollTop
+      this.scrollY =
+        document.documentElement.scrollTop || document.body.scrollTop;
     },
-    autoplay (e) {
+    autoplay(e) {
       var sys = e.toElement.dataset.symbol;
       if (sys == '-') {
         this.dis = this.dis * 2;
-        let l =  e.currentTarget.nextElementSibling.children[0];
-        l.appendChild(l.children[0])
+        const l = e.currentTarget.nextElementSibling.children[0];
+        l.appendChild(l.children[0]);
         l.style.marginLeft = -this.dis + 'px';
         l.style.marginLeft = 0;
         // 尾部
       } else {
         // 头部
         this.dis = this.dis * 2;
-        let r = e.currentTarget.previousElementSibling.children[0];
-        r.insertBefore(r.lastChild,r.children[0])
+        const r = e.currentTarget.previousElementSibling.children[0];
+        r.insertBefore(r.lastChild, r.children[0]);
         r.style.marginRight = -this.dis + 'px';
         r.style.marginRight = 0;
       }
     },
     goCart() {
-      this.$router.push({path: '/cart'})
+      this.$router.push({ path: '/cart' });
     }
   },
-  mounted () {
+  mounted() {
     this.$router.afterEach((to, from, next) => {
-        window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     });
-    if (JSON.parse(localStorage.getItem("goodscart"))) {
-      this.goodNums = JSON.parse(localStorage.getItem("goodscart")).length
+    if (JSON.parse(localStorage.getItem('goodscart'))) {
+      this.goodNums = JSON.parse(localStorage.getItem('goodscart')).length;
     }
   }
 };
@@ -292,7 +313,7 @@ export default {
   h2 {
     font-size: 28px;
     margin-bottom: 17px;
-    margin-right 32px;
+    margin-right: 32px;
   }
 
   .leftGoods-nav {
@@ -363,10 +384,10 @@ export default {
     }
 
     ul {
-      transform translateX(0)
+      transform: translateX(0);
       display: inline-block;
-      white-space nowrap
-      transition all .3s ease
+      white-space: nowrap;
+      transition: all 0.3s ease;
     }
 
     .title-nav {
@@ -478,26 +499,27 @@ export default {
         width: 160px;
         height: 38px;
         overflow: hidden;
-        white-space normal
+        white-space: normal;
       }
 
       .price {
-          min-width: 70px;
-          box-sizing: border-box;
-          height: 24px;
-          display: inline-block;
-          background: #fcdf39;
-          position: relative;
-          text-align: center;
-          font-size: 16px;
-          font-weight: bold;
-          line-height: 24px;
-          padding: 0 10px;
-          margin-top: 5px;
-          color: #333;
+        min-width: 70px;
+        box-sizing: border-box;
+        height: 24px;
+        display: inline-block;
+        background: #fcdf39;
+        position: relative;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 24px;
+        padding: 0 10px;
+        margin-top: 5px;
+        color: #333;
       }
-    .price:before {
-        content: "";
+
+      .price:before {
+        content: '';
         width: 0;
         height: 0;
         border-right: 7px solid #fff;
@@ -507,7 +529,8 @@ export default {
         top: 0;
         right: 0;
         z-index: 1;
-    }
+      }
+
       .del-price {
         display: inline-block;
         font-size: 12px;
@@ -557,6 +580,7 @@ export default {
         margin-left: 20px;
         transform: translate(50px);
       }
+
       .collectActive {
         background-position: -901px -457px;
       }
@@ -685,7 +709,7 @@ export default {
         cursor: pointer;
       }
 
-      .active,.title-nav:hover {
+      .active, .title-nav:hover {
         border-color: #24bb78;
         color: #24bb78;
       }
@@ -705,8 +729,8 @@ export default {
     }
 
     .nav0-3-wrap:hover {
-        margin-top: -4px;
-        transition: margin-top .3s ease
+      margin-top: -4px;
+      transition: margin-top 0.3s ease;
     }
 
     img {
@@ -714,36 +738,39 @@ export default {
       height: 540px;
     }
   }
+
   .go_carts {
-    width 100px
-    height 70px
-    border-radius 10px
-    position fixed
-    bottom 20px
-    right 20px
-    text-align center
+    width: 100px;
+    height: 70px;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-align: center;
+
     .cart-icon {
-        width: 36px;
-        height: 36px;
-        margin-top 15px
-        display: inline-block;
-        background-image: url('../../../assets/index.png');
-        background-position: -844px -403px;
-        cursor: pointer;
+      width: 36px;
+      height: 36px;
+      margin-top: 15px;
+      display: inline-block;
+      background-image: url('../../../assets/index.png');
+      background-position: -844px -403px;
+      cursor: pointer;
     }
+
     .goods_num {
-      display inline-block
-      width 20px
-      height 20px
-      border-radius 10px
-      background #d0021b
-      position absolute
-      right 22px
-      top 4px
-      text-align center
-      color #ffffff
-      line-height 20px
-      font-size 12px
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background: #d0021b;
+      position: absolute;
+      right: 22px;
+      top: 4px;
+      text-align: center;
+      color: #ffffff;
+      line-height: 20px;
+      font-size: 12px;
     }
   }
 }

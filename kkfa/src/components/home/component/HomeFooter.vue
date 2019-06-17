@@ -104,7 +104,7 @@
 
 <script>
 export default {
-    name: 'HomeFooter'
+  name: 'HomeFooter'
 };
 </script>
 
@@ -121,14 +121,16 @@ export default {
   width: 1140px;
   margin: 0 auto;
 }
-.clearfix:after {
-    width 0
-    height 0
-    display block
-    overflow hidden
-    clear both
-    content ""
+
+.clearfixafter {
+  width: 0;
+  height: 0;
+  display: block;
+  overflow: hidden;
+  clear: both;
+  content: '';
 }
+
 #kkfa-footer .footer-left {
   float: left;
   margin-left: 110px;

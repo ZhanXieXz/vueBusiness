@@ -11,7 +11,7 @@ import 'swiper/dist/css/swiper.css'
 import './css/main.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-Vue.use(VueAxios,axios)
+Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 Vue.use(VueAwisomeSwipei)
 Vue.use(VueLazyload, {

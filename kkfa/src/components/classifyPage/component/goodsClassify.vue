@@ -34,13 +34,13 @@
 
 <script>
 export default {
-  name: "goodsClassify",
+  name: 'goodsClassify',
   props: {
     classify: Array
   },
   methods: {
     goodsPageShow(items) {
-      this.$router.push({ name: "goodsDetails", params: { id: items.id } });
+      this.$router.push({ name: 'goodsDetails', params: { id: items.id }});
     }
   }
 };
