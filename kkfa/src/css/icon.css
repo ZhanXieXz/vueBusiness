@@ -1,0 +1,58 @@
+.icon {
+  background-image: url(../assets/index.png);
+  display: inline-block;
+}
+
+.icon-profile {
+  width: 18px;
+    height: 20px;
+    margin-right: 20px;
+    vertical-align: text-bottom;
+    background-position: -253px -120px;
+}
+.icon-orders {
+  width: 16px;
+  height: 20px;
+  margin-right: 20px;
+  vertical-align: text-bottom;
+  background-position: -188px -259px;
+}
+
+.icon-security {
+  width: 16px;
+  height: 20px;
+  margin-right: 20px;
+  vertical-align: text-bottom;
+  background-position: -188px -190px;
+}
+
+.icon-collection{
+  width: 22px;
+  height: 20px;
+  margin-right: 20px;
+  vertical-align: text-bottom;
+  background-position: -185px -325px;
+}
+
+.icon-notification {
+  width: 20px;
+  height: 19px;
+  margin-right: 20px;
+  vertical-align: text-bottom;
+  background-position: -186px -393px;
+}
+
+.icon-ticket {
+  width: 19px;
+  height: 18px;
+  margin-right: 20px;
+  vertical-align: text-bottom;
+  background-position: -187px -466px;
+}
+
+.icon-edit {
+  width: 15px;
+  height: 15px;
+  background-position: -508px -642px;
+  margin: 5px auto;
+}

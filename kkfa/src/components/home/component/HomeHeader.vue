@@ -5,13 +5,13 @@
         <div class="header-left">
           <ul>
             <li>
-              <a href>首页</a>
+              <router-link to="/">首页</router-link>
             </li>
             <li>
-              <a href>我的订单</a>
+              <router-link to="/">我的订单</router-link>
             </li>
             <li>
-              <a href>用户中心</a>
+              <router-link to="/user">用户中心</router-link>
             </li>
           </ul>
         </div>
@@ -42,8 +42,7 @@ export default {
       if (this.$store.state.cart.user_token) {
         alert('你已登录');
       } else {
-        document.getElementsByClassName('login-wrap')[0].style.display =
-          'block';
+        document.getElementsByClassName('login-wrap')[0].style.display = 'block';
       }
     }
   }

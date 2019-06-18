@@ -1,9 +1,9 @@
 <template>
   <div class="searchbox-wrap">
     <div class="search-box">
-      <a href>
+      <router-link to="/">
         <span class="kkfa-icon"></span>
-      </a>
+      </router-link>
       <div class="search-wrap">
         <form>
           <input type="text" name>
@@ -32,19 +32,15 @@ export default {
     height: 50px;
     padding: 25px 0 35px 0;
 
-    a {
-      width: 134px;
-      display: inline-block;
+    .kkfa-icon {
+      cursor: pointer;
       margin-left: 59px;
       margin-right: 95px;
-
-      .kkfa-icon {
-        width: 134px;
-        height: 23px;
-        display: inline-block;
-        margin-top: 10px;
-        background-image: url('../../../assets/kkfa.png');
-      }
+      width: 134px;
+      height: 23px;
+      display: inline-block;
+      margin-top: 10px;
+      background-image: url('../../../assets/kkfa.png');
     }
 
     .search-wrap {

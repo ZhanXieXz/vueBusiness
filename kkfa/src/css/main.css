@@ -11,3 +11,13 @@
     margin-top: -5px !important;
     transition: margin-top 0.3s ease;
 }
+
+.btns {
+    background-color: #24bb78;
+    color: #fff;
+}
+
+.btns:hover {
+    cursor: pointer;
+    background: #20A76B;
+}

@@ -56,10 +56,13 @@ export default {
       checkAllFlag: false
     };
   },
-  mounted() {
-    if (JSON.parse(localStorage.getItem('goodscart'))) {
-      this.goods = JSON.parse(localStorage.getItem('goodscart'));
-      this.goodsNum = JSON.parse(localStorage.getItem('goodscart')).length;
+  mounted () {
+    var historyProduct = JSON.parse(localStorage.getItem('goodscart'))
+    console.log(historyProduct);
+
+    if (historyProduct) {
+      this.goods = historyProduct;
+      this.goodsNum = historyProduct.length;
     }
   },
   methods: {
@@ -78,6 +81,8 @@ export default {
     delGoods(item) {
       const index = this.goods.indexOf(item);
       this.goods.splice(index, 1);
+      localStorage.setItem('goodscart', JSON.stringify(this.goods))
+      this.goodsNum = this.goods.length
       this.calmoney();
     },
     handleProduct(goods) {
@@ -93,9 +98,10 @@ export default {
       this.price = 0;
       this.goods.forEach((item, num) => {
         if (item.checked) {
-          this.price += item.price * item.num;
+          this.price += (item.price * item.num);
         }
       });
+      this.price = Math.round(this.price)
     }
   }
 };
@@ -169,11 +175,13 @@ export default {
     }
 
     .product-msg {
+      height: 100px;
       font-size: 14px;
       border-bottom: 1px solid #999;
       padding: 20px 0;
 
       .product {
+        margin-top: 44px;
         display: inline-block;
         width: 40%;
         padding-left: 55px;
@@ -181,6 +189,15 @@ export default {
         .goodsImg {
           width: 100px;
           height: 100px;
+          position: absolute;
+          top: 20px;
+          left: 55px;
+        }
+        span {
+          width 300px;
+          overflow hidden
+          display: inline-block
+          padding-left: 110px;
         }
       }
 

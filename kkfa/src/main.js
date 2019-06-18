@@ -9,6 +9,7 @@ import store from './store/index'
 import '../static/reset.css'
 import 'swiper/dist/css/swiper.css'
 import './css/main.css'
+import './css/icon.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)

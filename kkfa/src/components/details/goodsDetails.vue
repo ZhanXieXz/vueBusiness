@@ -2,17 +2,17 @@
     <div class="wrap">
         <div class="details clearfix">
             <div class="right">
-                <h3>{{g.name}}</h3>
-                <div class="info">{{g.info}}</div>
+                <h3>{{product.name}}</h3>
+                <div class="info">{{product.info}}</div>
                 <div style="position:relative">
                     <div class="product-essential">
-                        <img :src="g.image" alt="">
+                        <img :src="product.image" alt="">
                     </div>
                     <div class="essential">
                         <div class="price">
                             <p>price:</p>
-                            <p class="newprice">$ {{g.price}}.00</p>
-                            <p class="oldprice">usd {{g.oldPrice}}</p>
+                            <p class="newprice">$ {{product.price}}.00</p>
+                            <p class="oldprice">usd {{product.oldPrice}}</p>
                         </div>
                         <div class="product-msg">
                             <span class="platform">Platform:</span>
@@ -36,9 +36,9 @@
                         <div class="product-msg">
                             <span class="quantity">Quantity:</span>
                             <div class="icon-wrap">
-                                <button class="add-btn item-btn">-</button>
-                                <input type="text" class="quantity-ipt" value="1">
-                                <button class="reduced-btn item-btn">+</button>
+                                <button class="add-btn item-btn" @click="handleProductNum('-')">-</button>
+                                <input type="text" class="quantity-ipt" v-model=this.value>
+                                <button class="reduced-btn item-btn" @click="handleProductNum('+')">+</button>
                             </div>
                             <span>1-100</span>
                         </div>
@@ -47,7 +47,7 @@
                             <span class="payment-icon"></span>
                         </div>
                         <div class="buy-wrap">
-                            <button class="buy-btn">Buy now</button>
+                            <button class="buy-btn" @click="buyProduct">Buy now</button>
                             <span class="cart-icon"></span>
                         </div>
                     </div>
@@ -62,7 +62,9 @@ export default {
   name: 'goodsDetails',
   data () {
     return {
-      g: ''
+      product: '',
+      value: 1,
+      productNum: 0
     }
   },
   created: function () {
@@ -72,10 +74,23 @@ export default {
       for (let i = 0; i < data.length; i++) {
         const dataId = data[i].id
         if (id == dataId) {
-          this.g = data[i]
+          this.product = data[i];
         }
       }
     })
+  },
+  methods: {
+    buyProduct () {
+      this.product.num = this.value;
+      this.$store.commit('addCart', this.product);
+      this.$router.push('/cart')
+    },
+    handleProductNum (handleSymbol) {
+      if (handleSymbol == '-') {
+        this.productNum = this.value > 1 ? this.value -- : 1;
+      }
+      this.value ++
+    }
   }
 }
 </script>
@@ -202,7 +217,7 @@ export default {
                                 background-position -641px -633px
                             }
                             .item-btn {
-                                transition: color .3s ease-in-out 0s,background-color .3s ease-in-out 0s
+                                transition: color .1s ease-in-out 0s,background-color .1s ease-in-out 0s
                                 font-size: 12px
                                 line-height: 0px
                                 padding: 0px

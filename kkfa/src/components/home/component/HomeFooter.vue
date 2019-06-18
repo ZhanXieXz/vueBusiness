@@ -110,7 +110,6 @@ export default {
 
 <style scoped lang="stylus">
 #kkfa-footer {
-  margin-top: 72px;
   width: 100%;
   height: 634px;
   background-color: #000;

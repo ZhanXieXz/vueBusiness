@@ -13,7 +13,7 @@
       <h2>NEW PRODUCTS</h2>
       <div class="leftGoods-nav">
         <div>
-          <swiper class="swiper-wrap" :options="swipers">
+          <swiper class="swiper-wrap" :options="swipers" v-if="swiper.length">
             <swiper-slide v-for="items in swiper" :key="items.id" @click="goodsPageShow(items)">
               <img v-lazy="items.image" class="leftGoods-Img">
               <span class="goods-price">${{items.price}}</span>
@@ -154,15 +154,14 @@ export default {
         if (this.cartIndex[index]) {
           // 添加购物车
           this.$store.commit('addCart', obj);
-          this.goodNums = JSON.parse(localStorage.getItem('goodscart')).length;
+          this.goodNums = this.$store.state.cart.carts.length
         } else {
           // 购物车去除
           this.$store.commit('removeCart', obj);
-          this.goodNums = JSON.parse(localStorage.getItem('goodscart')).length;
+          this.goodNums = this.$store.state.cart.carts.length
         }
       } else {
-        document.getElementsByClassName('login-wrap')[0].style.display =
-          'block';
+        document.getElementsByClassName('login-wrap')[0].style.display = 'block';
       }
     },
     collect(goods, index, carousel) {
@@ -191,10 +190,6 @@ export default {
     goodsPageShow(items) {
       this.$router.push({ name: 'goodsDetails', params: { id: items.id }});
     },
-    scrolls() {
-      this.scrollY =
-        document.documentElement.scrollTop || document.body.scrollTop;
-    },
     autoplay(e) {
       var sys = e.toElement.dataset.symbol;
       if (sys == '-') {
@@ -221,8 +216,10 @@ export default {
     this.$router.afterEach((to, from, next) => {
       window.scrollTo(0, 0);
     });
-    if (JSON.parse(localStorage.getItem('goodscart'))) {
-      this.goodNums = JSON.parse(localStorage.getItem('goodscart')).length;
+    const historyProduct = JSON.parse(localStorage.getItem('goodscart'));
+    if (historyProduct) {
+      this.$store.state.cart.carts = historyProduct;
+      this.goodNums = historyProduct.length
     }
   }
 };
@@ -747,6 +744,7 @@ export default {
     bottom: 20px;
     right: 20px;
     text-align: center;
+    z-index 2
 
     .cart-icon {
       width: 36px;

@@ -4,6 +4,8 @@ import home from '@/components/home/home'
 import classify from '@/components/classifyPage/classify'
 import goodsDetails from '@/components/details/goodsDetails'
 import cart from '@/components/cart/cart'
+import user from '@/components/userCenter/my'
+import profile from '@/components/userCenter/components/rightProfile'
 
 Vue.use(Router)
 
@@ -26,6 +28,15 @@ export default new Router({
       path: '/cart',
       name: 'carts',
       component: cart
+    }, {
+      path: '/user',
+      component: user,
+      children: [
+        {
+          path: 'profile',
+          component: profile
+        }
+      ]
     }
   ]
 })
