@@ -2,10 +2,10 @@
   <div class="left">
     <div class="user-photo">
       <div>
-        <img src="../../../assets/lazy.png" alt class="user-img">
+        <img :src="headImg" alt class="user-img">
         <div class="edit btns">
           <span class="icon icon-edit"></span>
-          <input type="file" class="file-ipt" onchange="avatarFileOnchange(this)">
+          <input type="file" class="file-ipt" @change="upUserHeadImg($event)" id="file">
         </div>
       </div>
       <p>kkfa.com</p>
@@ -67,7 +67,8 @@ export default {
   name: 'leftSidebar',
   data() {
     return {
-      name: 1
+      name: 1,
+      headImg: require('../../../assets/lazy.png')
     };
   },
   methods: {
@@ -75,17 +76,21 @@ export default {
       this.$router.push({ path: '/user/' + patharg + '' });
       this.name = num;
       this.$emit('pageName', patharg);
+    },
+    upUserHeadImg (e) {
+      const file = e.target.files[0];
+      this.headImg = window.URL.createObjectURL(file)
     }
   },
   mounted() {
     const locationPage = this.$route.name;
     const pageNum = this.$route.params.id | 1;
-    console.log(locationPage)
-    this.name = pageNum
+    console.log(locationPage);
+    this.name = pageNum;
     switch (locationPage) {
       case 'profile':
         this.name = 1;
-        break
+        break;
       case 'security':
         this.name = 2;
         break;
@@ -206,5 +211,29 @@ export default {
   color: #24bb78;
   position: relative;
   border-color: #24bb78;
+}
+
+.active .icon-profile {
+  background-position: -253px -120px;
+}
+
+.active .icon-security {
+  background-position: -254px -190px;
+}
+
+.active .icon-orders {
+  background-position: -254px -259px;
+}
+
+.active .icon-collection {
+  background-position: -251px -325px;
+}
+
+.active .icon-notification {
+  background-position: -252px -393px;
+}
+
+.active .icon-ticket {
+  background-position: -253px -467px;
 }
 </style>
