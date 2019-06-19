@@ -56,3 +56,44 @@
   background-position: -508px -642px;
   margin: 5px auto;
 }
+
+.icon-password2 {
+  width: 62px;
+  height: 62px;
+  background-position: -1086px -99px;
+}
+.icon-password1 {
+  width: 62px;
+  height: 62px;
+  background-position: -1005px -99px;
+}
+.icon-succ {
+  width: 15px;
+  height: 11px;
+  background-position: -701px -124px;
+}
+.icon-error {
+  width: 11px;
+  height: 12px;
+  background-position: -654px -124px;
+}
+.icon-email1 {
+    width: 62px;
+    height: 62px;
+    background-position: -1005px -281px;
+}
+.icon-email2 {
+  width: 62px;
+  height: 62px;
+  background-position: -1086px -281px;
+}
+.icon-msg1 {
+  width: 62px;
+  height: 62px;
+  background-position: -1005px -190px;
+}
+.icon-msg2 {
+  width: 62px;
+  height: 62px;
+  background-position: -1086px -190px;
+}

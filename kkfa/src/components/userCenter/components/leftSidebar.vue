@@ -13,27 +13,47 @@
     <div>
       <!-- 添加class="active"激活 -->
       <ul class="sidebar-list">
-        <li class="sidebar-item active">
+        <li class="sidebar-item" :class="{active: name == 1}" @click="myTogglePage('',$event,1)">
           <span class="icon icon-profile"></span>
           <p>My Profile</p>
         </li>
-        <li class="sidebar-item">
+        <li
+          class="sidebar-item"
+          :class="{active: name == 2}"
+          @click="myTogglePage('security',$event,2)"
+        >
           <span class="icon icon-security"></span>
           <p>Account Security</p>
         </li>
-        <li class="sidebar-item">
+        <li
+          class="sidebar-item"
+          :class="{active: name == 3}"
+          @click="myTogglePage('orders',$event,3)"
+        >
           <span class="icon icon-orders"></span>
           <p>My Purchased Orders</p>
         </li>
-        <li class="sidebar-item">
+        <li
+          class="sidebar-item"
+          :class="{active: name == 4}"
+          @click="myTogglePage('collection',$event,4)"
+        >
           <span class="icon icon-collection"></span>
           <p>My Collection</p>
         </li>
-        <li class="sidebar-item">
+        <li
+          class="sidebar-item"
+          :class="{active: name == 5}"
+          @click="myTogglePage('notification',$event,5)"
+        >
           <span class="icon icon-notification"></span>
           <p>My Notification</p>
         </li>
-        <li class="sidebar-item">
+        <li
+          class="sidebar-item"
+          :class="{active: name == 6}"
+          @click="myTogglePage('ticket',$event,6)"
+        >
           <span class="icon icon-ticket"></span>
           <p>My Ticket</p>
         </li>
@@ -47,8 +67,41 @@ export default {
   name: 'leftSidebar',
   data() {
     return {
-      a: 1
+      name: 1
     };
+  },
+  methods: {
+    myTogglePage(patharg, e, num) {
+      this.$router.push({ path: '/user/' + patharg + '' });
+      this.name = num;
+      this.$emit('pageName', patharg);
+    }
+  },
+  mounted() {
+    const locationPage = this.$route.name;
+    const pageNum = this.$route.params.id | 1;
+    console.log(locationPage)
+    this.name = pageNum
+    switch (locationPage) {
+      case 'profile':
+        this.name = 1;
+        break
+      case 'security':
+        this.name = 2;
+        break;
+      case 'orders':
+        this.name = 3;
+        break;
+      case 'collection':
+        this.name = 4;
+        break;
+      case 'notification':
+        this.name = 5;
+        break;
+      case 'ticket':
+        this.name = 6;
+        break;
+    }
   }
 };
 </script>

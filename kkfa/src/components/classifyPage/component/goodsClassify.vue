@@ -191,13 +191,13 @@ export default {
         opacity: 0;
         display: inline-block;
         background-image: url('../../../assets/index.png');
-        background-position: -9px -156px;
+        background-position: -844px -403px;
         cursor: pointer;
         transform: translate(-50px);
       }
 
       .collect-icon {
-        background-position: -105px -156px;
+        background-position: -844px -457px;
         margin-left: 20px;
         transform: translate(50px);
       }

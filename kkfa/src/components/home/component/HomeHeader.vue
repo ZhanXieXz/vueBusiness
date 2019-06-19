@@ -10,9 +10,6 @@
             <li>
               <router-link to="/">我的订单</router-link>
             </li>
-            <li>
-              <router-link to="/user">用户中心</router-link>
-            </li>
           </ul>
         </div>
         <div class="header-right">
@@ -22,10 +19,10 @@
               <a href>注册</a>
             </li>
             <li>
-              <a href>订单中心</a>
+              <a @click="pushOrderCenter">订单中心</a>
             </li>
             <li>
-              <a href>用户中心</a>
+              <router-link to="/user">用户中心</router-link>
             </li>
           </ul>
         </div>
@@ -44,6 +41,9 @@ export default {
       } else {
         document.getElementsByClassName('login-wrap')[0].style.display = 'block';
       }
+    },
+    pushOrderCenter() {
+      this.$router.push({ name: 'orders', params: { id: 3 }})
     }
   }
 };

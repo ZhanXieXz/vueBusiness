@@ -1,8 +1,9 @@
 <template>
   <div class="user-wrap">
-    <user-crumbs></user-crumbs>
-    <left-sidebar></left-sidebar>
-    <router-link to="/user/profile">123</router-link>
+    <user-crumbs :crumbsName="crumbsName"></user-crumbs>
+    <left-sidebar @pageName='sendCrunbs'></left-sidebar>
+    <router-view></router-view>
+    <button @click="sendCrunbs">123</button>
   </div>
 </template>
 
@@ -12,10 +13,20 @@ import userCrumbs from './components/userCrumbs';
 import rightProfile from './components/rightProfile';
 export default {
   name: 'userHomePage',
+  data () {
+    return {
+      crumbsName: ''
+    }
+  },
   components: {
     leftSidebar,
     userCrumbs,
     rightProfile
+  },
+  methods: {
+    sendCrunbs (patharg) {
+      this.crumbsName = patharg
+    }
   }
 };
 </script>

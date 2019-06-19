@@ -7,14 +7,17 @@
       <i>&nbsp;/&nbsp;</i>
       <p>User Center</p>
       <i>&nbsp;/&nbsp;</i>
-      <p>My Profile</p>
+      <p>My {{this.crumbsName}}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'userCrumbs'
+  name: 'userCrumbs',
+  props: {
+    crumbsName: String
+  }
 };
 </script>
 
